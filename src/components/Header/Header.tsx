@@ -1,4 +1,6 @@
 import type {View} from '../../types';
+import logo from '../../assets/logo.svg';
+import './Header.css';
 
 interface HeaderProps {
     currentView: View;
@@ -7,10 +9,13 @@ interface HeaderProps {
 
 function Header ({ currentView, onNavigate }: HeaderProps) {
     return (
-        <header>
-            <span>FRAME</span>
+        <header className='header'>
+            <span className='header__logo'>
+                <img className='header__mark' src={logo} alt="" />
+                FRAME
+            </span>
 
-            <nav>
+            <nav className='header__nav'>
                 <button type='button' 
                  className={currentView === 'discover' ? 'nav-link nav-link--active' : 'nav-link'}
                  aria-current={currentView === 'discover' ? 'page' : undefined}
