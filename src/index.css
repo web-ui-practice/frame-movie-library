@@ -1,21 +1,20 @@
 :root {
-  --color-bg: #070A09;        
-  --color-text: #F3F4EE;      
-  --color-muted: #A3AAA0;     
-  --color-accent: #D5F34A;    
-  --color-border: #343A32;    
+  --color-bg: #070a09;
+  --color-text: #f3f4ee;
+  --color-muted: #a3aaa0;
+  --color-accent: #d5f34a;
+  --color-border: #343a32;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    background: var(--color-bg);
-    color: var(--color-text);
-    font-family: 'Inter', system-ui, sans-serif;
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Inter', system-ui, sans-serif;
 }
-
