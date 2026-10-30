@@ -4,10 +4,23 @@ import './DiscoverView.css';
 import { useState } from 'react';
 import searchIcon from '../assets/search.svg';
 
-function DiscoverView () {
-const [search, setSearch] = useState<string>('')
+const genres = [...new Set(movies.map((movie) => movie.genre))];
 
-const filteredMovies = movies.filter((movie) => movie.title.toLowerCase().includes(search.toLowerCase()));
+function DiscoverView () {
+const [search, setSearch] = useState<string>('');
+const [genre, setGenre] = useState<string>('all');
+
+const filteredMovies = movies.filter((movie) => {
+    
+  const matchesSearch = movie.title
+    .toLowerCase()
+    .includes(search.trim().toLowerCase());
+  const matchesGenre = genre === 'all' || movie.genre === genre;
+
+  return matchesSearch && matchesGenre;
+});
+
+const isFiltering = search.trim() !== '' || genre !== 'all';
 
     return (
         <main className="discover">
@@ -15,9 +28,11 @@ const filteredMovies = movies.filter((movie) => movie.title.toLowerCase().includ
           <h1 className='discover__title'>Discover</h1>
           <p className='discover__description'>Find a story worth your evening.</p>
          </div>
+
          <div className='discover__filters'>
+            {/*Search */}
             <div className='discover__search'>
-                <label className="discover__label" htmlFor="movie-search">Search Films</label>
+                <label className="discover__label" htmlFor="movie-search">Search films</label>
                 <div className='discover__field'>
                  <img src={searchIcon} alt="" className="discover__field-icon" />
                  <input 
@@ -30,9 +45,25 @@ const filteredMovies = movies.filter((movie) => movie.title.toLowerCase().includ
                   />
                 </div>
             </div>
+            {/*Genre */}
+            <div className="discover__genre">
+                <label htmlFor="genre-filter" className="discover__label">Genre</label>
+                <select
+                 id="genre-filter"
+                 className="discover__select"
+                 value={genre}
+                 onChange={(information) => setGenre(information.target.value)}
+                >
+                    <option value="all">All genres</option>
+                    {genres.map((genreName) => (
+                     <option key={genreName} value={genreName}>{genreName}</option>
+                     ))}
+                  </select>
+            </div>
          </div>
+
          <section className='discover__collection'>
-          <p className="discover__summary">{search !== '' ? `${filteredMovies.length} films found` : `${movies.length} films to discover`}</p>
+          <p className="discover__summary">{isFiltering ? `${filteredMovies.length} films found` : `${movies.length} films to discover`}</p>
           {filteredMovies.length === 0 ? (
             <div className="discover__empty" role="status">
               <p className="discover__empty-title">No films found</p>
@@ -44,7 +75,7 @@ const filteredMovies = movies.filter((movie) => movie.title.toLowerCase().includ
               <MovieCard key={movie.id} movie={movie} />
              ))}
             </div>
-)}
+          )}
          </section>
         </main>
     );
