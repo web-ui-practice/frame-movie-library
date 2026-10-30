@@ -7,6 +7,11 @@ interface HeaderProps {
   onNavigate: (view: View) => void;
 }
 
+const NAV_ITEMS: { view: View; label: string }[] = [
+  { view: 'discover', label: 'Discover' },
+  { view: 'watchlist', label: 'My Watchlist' },
+];
+
 function Header({ currentView, onNavigate }: HeaderProps) {
   return (
     <header className="header">
@@ -16,22 +21,21 @@ function Header({ currentView, onNavigate }: HeaderProps) {
       </span>
 
       <nav className="header__nav">
-        <button
-          type="button"
-          className={currentView === 'discover' ? 'nav-link nav-link--active' : 'nav-link'}
-          aria-current={currentView === 'discover' ? 'page' : undefined}
-          onClick={() => onNavigate('discover')}
-        >
-          Discover
-        </button>
-        <button
-          type="button"
-          className={currentView === 'watchlist' ? 'nav-link nav-link--active' : 'nav-link'}
-          aria-current={currentView === 'watchlist' ? 'page' : undefined}
-          onClick={() => onNavigate('watchlist')}
-        >
-          My Watchlist
-        </button>
+        {NAV_ITEMS.map(({ view, label }) => {
+          const isActive = view === currentView;
+
+          return (
+            <button
+              key={view}
+              type="button"
+              className={isActive ? 'nav-link nav-link--active' : 'nav-link'}
+              aria-current={isActive ? 'page' : undefined}
+              onClick={() => onNavigate(view)}
+            >
+              {label}
+            </button>
+          );
+        })}
       </nav>
     </header>
   );
