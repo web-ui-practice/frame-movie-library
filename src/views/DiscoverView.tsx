@@ -33,11 +33,18 @@ const filteredMovies = movies.filter((movie) => movie.title.toLowerCase().includ
          </div>
          <section className='discover__collection'>
           <p className="discover__summary">{search !== '' ? `${filteredMovies.length} films found` : `${movies.length} films to discover`}</p>
-          <div className="movie-grid">
-            {filteredMovies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-            ))}
-          </div>
+          {filteredMovies.length === 0 ? (
+            <div className="discover__empty" role="status">
+              <p className="discover__empty-title">No films found</p>
+              <p className="discover__empty-text">Try a different title.</p>
+            </div>
+          ) : (
+            <div className="movie-grid">
+             {filteredMovies.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+             ))}
+            </div>
+)}
          </section>
         </main>
     );

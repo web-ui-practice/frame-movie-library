@@ -111,3 +111,27 @@
 .discover__input::placeholder {
   color: var(--color-muted);
 }
+
+.discover__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;         
+  gap: 8px;
+  padding: 64px 16px;
+  text-align: center;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.discover__empty-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.discover__empty-text {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-muted);
+}
