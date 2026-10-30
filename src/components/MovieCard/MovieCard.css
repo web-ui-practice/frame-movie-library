@@ -1,0 +1,100 @@
+.movie-card__poster {
+    margin: 0;
+}
+
+.movie-card__poster img {
+    display: block;
+    width: 100%;
+    transform: scale(1.02);
+}
+
+.movie-card {
+  display: flex;
+  flex-direction: column;     
+  gap: 14px;                  
+}
+
+.movie-card__poster {
+  position: relative;         
+  margin: 0;                  
+  border-radius: 8px;         
+  overflow: hidden;          
+}
+
+.movie-card__poster img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;        
+  object-fit: cover;          
+}
+
+.movie-card__details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;                  
+}
+
+.movie-card__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--color-text);
+}
+
+.movie-card__info {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.movie-card__meta {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1;            
+  color: var(--color-muted);
+}
+
+.movie-card__rating {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.movie-card__rating span {
+  color: var(--color-accent); 
+}
+
+/* Title scrim + Poster lettering */
+.movie-card__letters {
+  position: absolute;         
+  left: 0;
+  right: 0;
+  bottom: 0;                  
+  display: flex;
+  flex-direction: column;      
+  align-items: center;         
+  gap: 12px;
+  padding: 80px 16px 24px;     
+  background: linear-gradient(to bottom, transparent, #070A09); 
+  text-align: center;
+}
+
+/* Posters Name */
+.movie-card__letters span:first-child {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;   
+  color: #FFFFFF;
+}
+
+/* A FRAME FACTION */
+.movie-card__letters span:last-child {
+  font-size: 6.57px;
+  font-weight: 500;
+  letter-spacing: 0.1em;      
+  text-transform: uppercase;
+  color: var(--color-text);
+}

@@ -15,11 +15,15 @@ function MovieCard ({movie}: MovieCardProps) {
                     <span>A Frame Fiction</span>
                 </div>
             </figure>
-            <h2 className='movie-card__title'>{movie.title}</h2>
-            <p className='movie-card__meta'>{movie.year} · {movie.genre}</p>
-            <p className='movie-card__rating'>
+            <div className='movie-card__details'>
+             <h2 className='movie-card__title'>{movie.title}</h2>
+             <div className='movie-card__info'>
+              <p className='movie-card__meta'>{movie.year} · {movie.genre}</p>
+              <p className='movie-card__rating'>
                 <span aria-hidden='true'>★</span> {movie.rating.toFixed(1)}
-            </p>
+              </p>
+             </div>
+            </div>
         </article>
     );
 }
