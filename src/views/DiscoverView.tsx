@@ -2,6 +2,7 @@ import { movies } from '../data/movies';
 import MovieCard from '../components/MovieCard/MovieCard';
 import './DiscoverView.css';
 import { useState } from 'react';
+import searchIcon from '../assets/search.svg';
 
 function DiscoverView () {
 const [search, setSearch] = useState<string>('')
@@ -16,15 +17,18 @@ const filteredMovies = movies.filter((movie) => movie.title.toLowerCase().includ
          </div>
          <div className='discover__filters'>
             <div className='discover__search'>
-                <label htmlFor="movie-search">Search Films</label>
-                <input 
-                 id='movie-search'
-                 type="search"
-                 placeholder='Search by title...'
-                 value={search}
-                 onChange={(letter) => setSearch(letter.target.value)}
-
-                 />
+                <label className="discover__label" htmlFor="movie-search">Search Films</label>
+                <div className='discover__field'>
+                 <img src={searchIcon} alt="" className="discover__field-icon" />
+                 <input 
+                  id='movie-search'
+                  className="discover__input"
+                  type="search"
+                  placeholder='Search by title...'
+                  value={search}
+                  onChange={(letter) => setSearch(letter.target.value)}
+                  />
+                </div>
             </div>
          </div>
          <section className='discover__collection'>
