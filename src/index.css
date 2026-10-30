@@ -1,0 +1,21 @@
+:root {
+  --color-bg: #070a09;
+  --color-text: #f3f4ee;
+  --color-muted: #a3aaa0;
+  --color-accent: #d5f34a;
+  --color-border: #343a32;
+  --color-header-bg: #121413;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Inter', system-ui, sans-serif;
+}
