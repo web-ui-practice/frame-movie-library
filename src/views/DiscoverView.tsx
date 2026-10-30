@@ -1,18 +1,36 @@
 import { movies } from '../data/movies';
 import MovieCard from '../components/MovieCard/MovieCard';
 import './DiscoverView.css';
+import { useState } from 'react';
 
 function DiscoverView () {
+const [search, setSearch] = useState<string>('')
+
+const filteredMovies = movies.filter((movie) => movie.title.toLowerCase().includes(search.toLowerCase()));
+
     return (
         <main className="discover">
          <div className='discover__heading'>
           <h1 className='discover__title'>Discover</h1>
           <p className='discover__description'>Find a story worth your evening.</p>
          </div>
+         <div className='discover__filters'>
+            <div className='discover__search'>
+                <label htmlFor="movie-search">Search Films</label>
+                <input 
+                 id='movie-search'
+                 type="search"
+                 placeholder='Search by title...'
+                 value={search}
+                 onChange={(letter) => setSearch(letter.target.value)}
+
+                 />
+            </div>
+         </div>
          <section className='discover__collection'>
-            <p className="discover__summary">{movies.length} films to discover</p>
+          <p className="discover__summary">{search !== '' ? `${filteredMovies.length} films found` : `${movies.length} films to discover`}</p>
           <div className="movie-grid">
-            {movies.map((movie) => (
+            {filteredMovies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
             ))}
           </div>
