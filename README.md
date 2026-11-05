@@ -34,8 +34,8 @@ Then open http://localhost:5173 in the browser.
 ## Project structure
 
 src/
-  components/   reusable UI components (Header, MovieCard)
-  views/        pages (DiscoverView, WatchlistView)
-  data/         mock movie data
-  types/        TypeScript types
-  assets/       icons and images
+components/ reusable UI components (Header, MovieCard)
+views/ pages (DiscoverView, WatchlistView)
+data/ mock movie data
+types/ TypeScript types
+assets/ icons and images
