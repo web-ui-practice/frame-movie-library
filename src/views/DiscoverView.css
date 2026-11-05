@@ -1,37 +1,38 @@
 .discover {
- display: flex;
- flex-direction: column;
- gap: 32px;
- padding: 48px 64px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 48px 64px 32px;
 }
 
 .discover__heading {
- display: flex;
- flex-direction: column;
- gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.discover__heading h1, .discover__heading p {
-    margin: 0;
+.discover__heading h1,
+.discover__heading p {
+  margin: 0;
 }
 
 .discover__collection {
- display: flex;
- flex-direction: column;
- gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .discover__summary {
- margin: 0;
- font-weight: 400;
- font-size: 13px;
- color: var(--color-muted);
+  margin: 0;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--color-muted);
 }
 
 .movie-grid {
- display: grid;
- grid-template-columns: repeat(5, 1fr);
- gap: 32px 24px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px 24px;
 }
 
 @media (max-width: 1024px) {
@@ -47,15 +48,15 @@
 }
 
 .discover__title {
- font-size: 48px;
- font-weight: 600;
- color: var(--color-text);
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 .discover__description {
- color: #A3AAA0;
- font-size: 14px;
- font-weight: 400;
+  color: #a3aaa0;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .discover__filters {
@@ -64,7 +65,7 @@
 }
 
 .discover__search {
-  flex: 1;                       
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -75,7 +76,7 @@
   font-weight: 600;
   line-height: 1;
   letter-spacing: 0.1em;
-  text-transform: uppercase;      
+  text-transform: uppercase;
   color: var(--color-muted);
 }
 
@@ -85,7 +86,7 @@
   gap: 12px;
   height: 52px;
   padding: 0 16px;
-  background: #1B1E1B;
+  background: #1b1e1b;
   border: 1px solid var(--color-border);
   border-radius: 8px;
 }
@@ -95,14 +96,14 @@
 }
 
 .discover__field-icon {
-  flex-shrink: 0;                
+  flex-shrink: 0;
 }
 
 .discover__input {
-  flex: 1;                        
+  flex: 1;
   background: none;
   border: none;
-  outline: none;                
+  outline: none;
   font: inherit;
   font-size: 14px;
   color: var(--color-text);
@@ -115,7 +116,7 @@
 .discover__empty {
   display: flex;
   flex-direction: column;
-  align-items: center;         
+  align-items: center;
   gap: 8px;
   padding: 64px 16px;
   text-align: center;
@@ -146,10 +147,10 @@
 
 /* Genre Select */
 .discover__select {
-  appearance: none;               
+  appearance: none;
   height: 52px;
-  padding: 0 48px 0 16px;         
-  background: #1B1E1B url('../assets/chevron-down.svg') no-repeat right 16px center;
+  padding: 0 48px 0 16px;
+  background: #1b1e1b url('../assets/chevron-down.svg') no-repeat right 16px center;
   border: 1px solid var(--color-border);
   border-radius: 8px;
   font: inherit;
@@ -160,10 +161,10 @@
 
 .discover__select:focus-visible {
   outline: none;
-  border-color: var(--color-accent); 
+  border-color: var(--color-accent);
 }
 
 /* список опцій теж темний */
 .discover__select option {
-  background: #1B1E1B;
+  background: #1b1e1b;
 }
