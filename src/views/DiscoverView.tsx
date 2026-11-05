@@ -3,6 +3,7 @@ import MovieCard from '../components/MovieCard/MovieCard';
 import './DiscoverView.css';
 import { useState } from 'react';
 import searchIcon from '../assets/search.svg';
+import { TEXTS } from '../constants/texts';
 
 function DiscoverView() {
   const [search, setSearch] = useState<string>('');
@@ -14,8 +15,8 @@ function DiscoverView() {
   return (
     <main className="discover">
       <div className="discover__heading">
-        <h1 className="discover__title">Discover</h1>
-        <p className="discover__description">Find a story worth your evening.</p>
+        <h1 className="discover__title">{TEXTS.discover.title}</h1>
+        <p className="discover__description">{TEXTS.discover.subtitle}</p>
       </div>
       <div className="discover__filters">
         <div className="discover__search">
@@ -39,7 +40,7 @@ function DiscoverView() {
         <p className="discover__summary">
           {search !== ''
             ? `${filteredMovies.length} films found`
-            : `${movies.length} films to discover`}
+            : `${movies.length} ${TEXTS.discover.summary}`}
         </p>
         {filteredMovies.length === 0 ? (
           <div className="discover__empty" role="status">
