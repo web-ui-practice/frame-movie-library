@@ -5,12 +5,20 @@ import { useState } from 'react';
 import searchIcon from '../assets/search.svg';
 import { TEXTS } from '../constants/texts';
 
+const genres = [...new Set(movies.map((movie) => movie.genre))];
+
 function DiscoverView() {
   const [search, setSearch] = useState<string>('');
+  const [genre, setGenre] = useState<string>('all');
 
-  const filteredMovies = movies.filter((movie) =>
-    movie.title.toLowerCase().includes(search.toLowerCase()),
-  );
+  const filteredMovies = movies.filter((movie) => {
+    const matchesSearch = movie.title.toLowerCase().includes(search.trim().toLowerCase());
+    const matchesGenre = genre === 'all' || movie.genre === genre;
+
+    return matchesSearch && matchesGenre;
+  });
+
+  const isFiltering = search.trim() !== '' || genre !== 'all';
 
   return (
     <main className="discover">
@@ -18,10 +26,12 @@ function DiscoverView() {
         <h1 className="discover__title">{TEXTS.discover.title}</h1>
         <p className="discover__description">{TEXTS.discover.subtitle}</p>
       </div>
+
       <div className="discover__filters">
+        {/*Search */}
         <div className="discover__search">
           <label className="discover__label" htmlFor="movie-search">
-            Search Films
+            Search films
           </label>
           <div className="discover__field">
             <img src={searchIcon} alt="" className="discover__field-icon" />
@@ -35,10 +45,30 @@ function DiscoverView() {
             />
           </div>
         </div>
+        {/*Genre */}
+        <div className="discover__genre">
+          <label htmlFor="genre-filter" className="discover__label">
+            Genre
+          </label>
+          <select
+            id="genre-filter"
+            className="discover__select"
+            value={genre}
+            onChange={(information) => setGenre(information.target.value)}
+          >
+            <option value="all">All genres</option>
+            {genres.map((genreName) => (
+              <option key={genreName} value={genreName}>
+                {genreName}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
+
       <section className="discover__collection">
         <p className="discover__summary">
-          {search !== ''
+          {isFiltering
             ? `${filteredMovies.length} films found`
             : `${movies.length} ${TEXTS.discover.summary}`}
         </p>
