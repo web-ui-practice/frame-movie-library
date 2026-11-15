@@ -1,15 +1,26 @@
 import { movies } from '../data/movies';
 import MovieCard from '../components/MovieCard/MovieCard';
 import './DiscoverView.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import searchIcon from '../assets/search.svg';
 import { TEXTS } from '../constants/texts';
 
 function DiscoverView() {
   const [search, setSearch] = useState<string>('');
+  const [debouncedSearch, setDebouncedSearch] = useState<string>('');
+
+  useEffect(() => {
+  const timerId = setTimeout(() => {
+    setDebouncedSearch(search);
+  }, 500);
+
+  return () => {
+    clearTimeout(timerId);
+  };
+}, [search]);
 
   const filteredMovies = movies.filter((movie) =>
-    movie.title.toLowerCase().includes(search.toLowerCase()),
+    movie.title.toLowerCase().includes(debouncedSearch.toLowerCase()),
   );
 
   return (
