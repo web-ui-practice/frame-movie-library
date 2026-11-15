@@ -49,7 +49,7 @@ function DiscoverView() {
       </div>
       <section className="discover__collection">
         <p className="discover__summary">
-          {search 
+          {debouncedSearch 
             ? `${filteredMovies.length} films found`
             : `${movies.length} ${TEXTS.discover.summary}`}
         </p>
