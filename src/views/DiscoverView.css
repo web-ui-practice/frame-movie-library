@@ -8,7 +8,7 @@
 .discover__heading {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-12);
 }
 
 .discover__heading h1,
@@ -55,20 +55,20 @@
 
 .discover__description {
   color: #a3aaa0;
-  font-size: 14px;
+  font-size: var(--font-size-14);
   font-weight: 400;
 }
 
 .discover__filters {
   display: flex;
-  gap: 16px;
+  gap: var(--space-16);
 }
 
 .discover__search {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-8);
 }
 
 .discover__label {
@@ -83,12 +83,12 @@
 .discover__field {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-12);
   height: 52px;
-  padding: 0 16px;
-  background: #1b1e1b;
+  padding: 0 var(--space-16);
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: var(--border-radius);
 }
 
 .discover__field:focus-within {
@@ -105,7 +105,7 @@
   border: none;
   outline: none;
   font: inherit;
-  font-size: 14px;
+  font-size: var(--font-size-14);
   color: var(--color-text);
 }
 
@@ -117,23 +117,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 64px 16px;
+  gap: var(--space-8);
+  padding: 64px var(--space-16);
   text-align: center;
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: var(--border-radius);
 }
 
 .discover__empty-title {
   margin: 0;
-  font-size: 16px;
+  font-size: var(--font-size-16);
   font-weight: 600;
   color: var(--color-text);
 }
 
 .discover__empty-text {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--font-size-14);
   color: var(--color-muted);
 }
 
