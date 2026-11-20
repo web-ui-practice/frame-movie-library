@@ -168,3 +168,22 @@
 .discover__select option {
   background: #1b1e1b;
 }
+
+/* Small screens: smaller page padding, Genre goes under Search */
+@media (max-width: 600px) {
+  .discover {
+    padding: 32px 16px;
+  }
+
+  .discover__title {
+    font-size: 36px;
+  }
+
+  .discover__filters {
+    flex-direction: column;
+  }
+
+  .discover__genre {
+    width: 100%;
+  }
+}
