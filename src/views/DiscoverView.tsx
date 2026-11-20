@@ -1,5 +1,7 @@
 import { movies } from '../data/movies';
 import MovieCard from '../components/MovieCard/MovieCard';
+import MovieModal from '../components/MovieModal/MovieModal';
+import type { Movie } from '../types';
 import './DiscoverView.css';
 import { useState, useEffect } from 'react';
 import searchIcon from '../assets/search.svg';
@@ -11,16 +13,17 @@ function DiscoverView() {
   const [search, setSearch] = useState<string>('');
   const [genre, setGenre] = useState<string>('all');
   const [debouncedSearch, setDebouncedSearch] = useState<string>('');
+  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
   useEffect(() => {
-  const timerId = setTimeout(() => {
-    setDebouncedSearch(search);
-  }, 500);
+    const timerId = setTimeout(() => {
+      setDebouncedSearch(search);
+    }, 500);
 
-  return () => {
-    clearTimeout(timerId);
-  };
-}, [search]);
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [search]);
 
   const filteredMovies = movies.filter((movie) => {
     const matchesSearch = movie.title.toLowerCase().includes(debouncedSearch.trim().toLowerCase());
@@ -91,11 +94,13 @@ function DiscoverView() {
         ) : (
           <div className="movie-grid">
             {filteredMovies.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} />
+              <MovieCard key={movie.id} movie={movie} onSelect={setSelectedMovie} />
             ))}
           </div>
         )}
       </section>
+
+      {selectedMovie && <MovieModal movie={selectedMovie} onClose={() => setSelectedMovie(null)} />}
     </main>
   );
 }

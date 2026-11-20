@@ -3,9 +3,10 @@ import './MovieCard.css';
 
 interface MovieCardProps {
   movie: Movie;
+  onSelect: (movie: Movie) => void;
 }
 
-function MovieCard({ movie }: MovieCardProps) {
+function MovieCard({ movie, onSelect }: MovieCardProps) {
   return (
     <article className="movie-card">
       <figure className="movie-card__poster">
@@ -16,7 +17,18 @@ function MovieCard({ movie }: MovieCardProps) {
         </div>
       </figure>
       <div className="movie-card__details">
-        <h2 className="movie-card__title">{movie.title}</h2>
+        <h2 className="movie-card__title">
+          {/* The button stretches over the whole card (see ::after in CSS),
+              so the card is clickable and reachable with Tab + Enter */}
+          <button
+            type="button"
+            className="movie-card__button"
+            aria-haspopup="dialog"
+            onClick={() => onSelect(movie)}
+          >
+            {movie.title}
+          </button>
+        </h2>
         <div className="movie-card__info">
           <p className="movie-card__meta">
             {movie.year} · {movie.genre}
