@@ -12,4 +12,8 @@ export const TEXTS = {
     emptyText: 'Add films from Discover to keep them for later.',
     emptyAction: 'Browse films',
   },
+  footer: {
+    about: 'FRAME / A fictional film collection. A real love for cinema.',
+    ratings: 'All ratings out of 10',
+  },
 };

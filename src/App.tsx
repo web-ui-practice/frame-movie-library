@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { View } from './types/index';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import DiscoverView from './views/DiscoverView';
 import WatchlistView from './views/WatchlistView';
 import { useWatchlist } from './hooks/useWatchlist';
@@ -27,6 +28,7 @@ function App() {
           onBrowse={() => setCurrentView('discover')}
         />
       )}
+      <Footer />
     </>
   );
 }
