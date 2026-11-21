@@ -1,0 +1,47 @@
+.watchlist-button {
+  /* Sits above the stretched card link (.movie-card__button::after) */
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  width: 100%;
+  padding: 0 var(--space-12);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-surface);
+  font: inherit;
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.watchlist-button--small {
+  height: 36px;
+  font-size: var(--font-size-12);
+}
+
+.watchlist-button--large {
+  height: 44px;
+  font-size: 13px;
+}
+
+.watchlist-button:hover {
+  border-color: var(--color-muted);
+}
+
+.watchlist-button--saved {
+  border-color: #4d5a2a;
+  background: #1f2716;
+  color: var(--color-accent);
+}
+
+.watchlist-button--saved:hover {
+  border-color: var(--color-accent);
+}
+
+.watchlist-button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
