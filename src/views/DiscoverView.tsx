@@ -9,7 +9,12 @@ import { TEXTS } from '../constants/texts';
 
 const genres = [...new Set(movies.map((movie) => movie.genre))];
 
-function DiscoverView() {
+interface DiscoverViewProps {
+  isInWatchlist: (movieId: number) => boolean;
+  onToggleWatchlist: (movieId: number) => void;
+}
+
+function DiscoverView({ isInWatchlist, onToggleWatchlist }: DiscoverViewProps) {
   const [search, setSearch] = useState<string>('');
   const [genre, setGenre] = useState<string>('all');
   const [debouncedSearch, setDebouncedSearch] = useState<string>('');
@@ -94,13 +99,26 @@ function DiscoverView() {
         ) : (
           <div className="movie-grid">
             {filteredMovies.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} onSelect={setSelectedMovie} />
+              <MovieCard
+                key={movie.id}
+                movie={movie}
+                isSaved={isInWatchlist(movie.id)}
+                onSelect={setSelectedMovie}
+                onToggleWatchlist={onToggleWatchlist}
+              />
             ))}
           </div>
         )}
       </section>
 
-      {selectedMovie && <MovieModal movie={selectedMovie} onClose={() => setSelectedMovie(null)} />}
+      {selectedMovie && (
+        <MovieModal
+          movie={selectedMovie}
+          isSaved={isInWatchlist(selectedMovie.id)}
+          onClose={() => setSelectedMovie(null)}
+          onToggleWatchlist={onToggleWatchlist}
+        />
+      )}
     </main>
   );
 }

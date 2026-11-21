@@ -103,7 +103,7 @@ body:has(.movie-modal[open]) {
 .movie-modal__info {
   display: flex;
   flex-direction: column;
-  padding-top: 64px;
+  padding-top: 44px;
 }
 
 .movie-modal__title {
@@ -188,4 +188,29 @@ body:has(.movie-modal[open]) {
   .movie-modal__title {
     font-size: 28px;
   }
+}
+
+/* Watchlist status and action */
+.movie-modal__status {
+  min-height: 14px;
+  margin: 0 0 8px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.movie-modal__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.movie-modal__hint {
+  margin: 0;
+  font-size: 11px;
+  text-align: center;
+  color: var(--color-muted);
 }

@@ -1,13 +1,16 @@
 import { useEffect, useRef, type MouseEvent } from 'react';
 import type { Movie } from '../../types';
+import WatchlistButton from '../WatchlistButton/WatchlistButton';
 import './MovieModal.css';
 
 interface MovieModalProps {
   movie: Movie;
+  isSaved: boolean;
   onClose: () => void;
+  onToggleWatchlist: (movieId: number) => void;
 }
 
-function MovieModal({ movie, onClose }: MovieModalProps) {
+function MovieModal({ movie, isSaved, onClose, onToggleWatchlist }: MovieModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -70,6 +73,9 @@ function MovieModal({ movie, onClose }: MovieModalProps) {
         </figure>
 
         <div className="movie-modal__info">
+          {/* Always rendered so the layout doesn't jump; empty when not saved */}
+          <p className="movie-modal__status">{isSaved && 'In your watchlist'}</p>
+
           <h2 id="movie-modal-title" className="movie-modal__title">
             {movie.title}
           </h2>
@@ -98,6 +104,19 @@ function MovieModal({ movie, onClose }: MovieModalProps) {
             <h3 className="movie-modal__label">Synopsis</h3>
             <p id="movie-modal-description" className="movie-modal__description">
               {movie.description}
+            </p>
+          </div>
+
+          <div className="movie-modal__actions">
+            <WatchlistButton
+              movie={movie}
+              isSaved={isSaved}
+              onToggle={onToggleWatchlist}
+              size="large"
+            />
+            {/* role="status": screen readers announce the change after a click */}
+            <p className="movie-modal__hint" role="status">
+              {isSaved ? 'Saved for your next movie night.' : 'Keep it for later.'}
             </p>
           </div>
         </div>
