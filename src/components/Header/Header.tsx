@@ -5,6 +5,7 @@ import './Header.css';
 interface HeaderProps {
   currentView: View;
   onNavigate: (view: View) => void;
+  watchlistCount: number;
 }
 
 const NAV_ITEMS: { view: View; label: string }[] = [
@@ -12,7 +13,7 @@ const NAV_ITEMS: { view: View; label: string }[] = [
   { view: 'watchlist', label: 'My Watchlist' },
 ];
 
-function Header({ currentView, onNavigate }: HeaderProps) {
+function Header({ currentView, onNavigate, watchlistCount }: HeaderProps) {
   return (
     <header className="header">
       <span className="header__logo">
@@ -33,6 +34,15 @@ function Header({ currentView, onNavigate }: HeaderProps) {
               onClick={() => onNavigate(view)}
             >
               {label}
+              {view === 'watchlist' && (
+                <>
+                  <span className="nav-link__count" aria-hidden="true">
+                    {watchlistCount}
+                  </span>
+                  {/* Screen readers hear "My Watchlist, 4 saved" instead of "My Watchlist 4" */}
+                  <span className="visually-hidden">, {watchlistCount} saved</span>
+                </>
+              )}
             </button>
           );
         })}

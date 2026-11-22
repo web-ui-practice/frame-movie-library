@@ -133,3 +133,17 @@
 .movie-card:hover .movie-card__title {
   color: var(--color-accent);
 }
+
+/* "In watchlist" badge on the poster */
+.movie-card__badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
